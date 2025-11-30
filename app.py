@@ -407,13 +407,111 @@ def main():
     )
     init_state()
     
-    # Load responsive CSS
-    with open('responsive_styles.css', 'r') as f:
-        css_content = f.read()
-    
+    # Inline CSS for Streamlit Cloud compatibility
     st.markdown("""
     <style>
-    """ + css_content + """
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    .main {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-family: 'Inter', sans-serif;
+        padding: 0.5rem;
+    }
+    
+    .enterprise-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        padding: 3rem 2rem;
+        border-radius: 25px;
+        text-align: center;
+        color: white;
+        margin-bottom: 2rem;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .agent-card {
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 1rem 0;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        transition: all 0.4s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .metric-dashboard {
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.5);
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 100px;
+    }
+    
+    .agent-selector {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+        animation: statusPulse 2s infinite;
+    }
+    
+    .status-online { background: #28a745; }
+    .status-busy { background: #ffc107; }
+    .status-offline { background: #dc3545; }
+    
+    @keyframes statusPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+    
+    .notification-badge {
+        background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin: 0.2rem;
+        display: inline-block;
+    }
+    
+    @media (max-width: 768px) {
+        .main { padding: 0.25rem; }
+        .enterprise-header { padding: 2rem 1rem !important; }
+        .enterprise-header h1 { font-size: 2rem !important; }
+        .agent-card { padding: 1.5rem; }
+        .metric-dashboard { padding: 1rem; }
+    }
+    
+    @media (max-width: 480px) {
+        .enterprise-header h1 { font-size: 1.5rem !important; }
+        .agent-card { padding: 1rem !important; }
+        .metric-dashboard { padding: 0.75rem !important; }
+    }
     
     .main {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
